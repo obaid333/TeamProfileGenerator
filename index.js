@@ -44,3 +44,19 @@ function promptManager() {
       });
   }
 
+
+
+
+  function generateHTML() {
+    const renderedHTML = render(teamMembers);
+  
+    if (!fs.existsSync(OUTPUT_DIR)) {
+      fs.mkdirSync(OUTPUT_DIR);
+    }
+  
+    fs.writeFileSync(outputPath, renderedHTML);
+  
+    console.log(`Team HTML generated at ${outputPath}`);
+  }
+  
+  promptManager();
