@@ -13,7 +13,7 @@ const render = require("./src/page-template.js");
 
 const teamMembers = [];
 
-function promptManager() {
+function promptsManager() {
     inquirer
       .prompt([
         {
@@ -44,7 +44,7 @@ function promptManager() {
       });
   }
 
-function promptEngineer() {
+function promptsEngineer() {
   inquirer
     .prompt([
       {
@@ -64,17 +64,47 @@ function promptEngineer() {
       },
       {
         type: 'input',
-        name: 'GitHub',
+        name: 'gitHub',
         message: "Enter the Engineer's GitHub Username:"
       }
     ])
     .then((answers) => {
-      const engineer = new Engineer(answers.name, answers.id, answers.email, answers.officeNumber);
+      const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
       teamMembers.push(engineer);
       //generateHTML();       
     });
 }
 
+function promptsIntern() {
+  inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: "Enter the Intern's Name:"
+      },
+      {
+        type: 'input',
+        name: 'ID',
+        message: "Enter the Intern's ID:"
+      },
+      {
+        type: 'input',
+        name: 'email',
+        message: "Enter the Intern's Email:"
+      },
+      {
+        type: 'input',
+        name: 'school',
+        message: "Enter the Intern's School's Name:"
+      }
+    ])
+    .then((answers) => {
+      const intern = new Engineer(answers.name, answers.id, answers.email, answers.school);
+      teamMembers.push(intern);
+      //generateHTML();       
+    });
+}
 
   function generateHTML() {
     const renderedHTML = render(teamMembers);
@@ -87,4 +117,4 @@ function promptEngineer() {
     console.log(`Team HTML generated at ${outputPath}`);
   }
   
-    promptManager();
+    promptsManager();
