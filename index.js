@@ -40,7 +40,8 @@ function promptsManager() {
       .then((answers) => {
         const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
         teamMembers.push(manager);
-        generateHTML();       
+        //generateHTML();
+        optionsMenu();       
       });
   }
 
@@ -71,7 +72,8 @@ function promptsEngineer() {
     .then((answers) => {
       const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
       teamMembers.push(engineer);
-      //generateHTML();       
+      //generateHTML();
+      optionsMenu();        
     });
 }
 
@@ -102,8 +104,28 @@ function promptsIntern() {
     .then((answers) => {
       const intern = new Engineer(answers.name, answers.id, answers.email, answers.school);
       teamMembers.push(intern);
-      //generateHTML();       
+      //generateHTML();
+      optionsMenu();       
     });
+}
+
+function optionsMenu() {
+  inquirer
+    prompt([{
+      type: 'list',
+      name: 'optionMenu',
+      message: "Would you like to:",
+      choices: ['Add an Engineer', 'Add an Intern', 'Finish building the team']
+    }])
+    .then((answers) => {
+      if (answers.menu === 'Add an engineer') {
+        promptsEngineer();
+      } else if (answers.menu === 'Add an intern') {
+        promptsIntern();
+      } else if (answers.menu === 'Finish building the team') {
+        generateHTML();
+      }
+    })
 }
 
   function generateHTML() {
