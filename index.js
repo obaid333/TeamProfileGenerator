@@ -19,22 +19,22 @@ function promptManager() {
         {
           type: 'input',
           name: 'name',
-          message: "Enter the team manager's name:"
+          message: "Enter the Team Manager's Name:"
         },
         {
           type: 'input',
           name: 'id',
-          message: "Enter the team manager's employee ID:"
+          message: "Enter the Team Manager's Employee ID:"
         },
         {
           type: 'input',
           name: 'email',
-          message: "Enter the team manager's email:"
+          message: "Enter the Team Manager's Email:"
         },
         {
           type: 'input',
           name: 'officeNumber',
-          message: "Enter the team manager's office number:"
+          message: "Enter the Team Manager's office number:"
         },
       ])
       .then((answers) => {
@@ -50,7 +50,7 @@ function promptEngineer() {
       {
         type: 'input',
         name: 'name',
-        message: "Enter the Engineer's name:"
+        message: "Enter the Engineer's Name:"
       },
       {
         type: 'input',
@@ -68,7 +68,11 @@ function promptEngineer() {
         message: "Enter the Engineer's GitHub Username:"
       }
     ])
-    
+    .then((answers) => {
+      const engineer = new Engineer(answers.name, answers.id, answers.email, answers.officeNumber);
+      teamMembers.push(engineer);
+      //generateHTML();       
+    });
 }
 
 
