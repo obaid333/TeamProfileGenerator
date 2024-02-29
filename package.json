@@ -9,8 +9,10 @@
   "scripts": {
     "test": "jest"
   },
-  
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^6.3.1"
+  }
 }
