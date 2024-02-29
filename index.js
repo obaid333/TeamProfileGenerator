@@ -118,14 +118,14 @@ function optionsMenu() {
       choices: ['Add an Engineer', 'Add an Intern', 'Finish building the team']
     }])
     .then((answers) => {
-      if (answers.optionMenu === 'Add an engineer') {
+      if (answers.optionMenu === 'Add an Engineer') {
         promptsEngineer();
-      } else if (answers.optionMenu === 'Add an intern') {
+      } else if (answers.optionMenu === 'Add an Intern') {
         promptsIntern();
       } else if (answers.optionMenu === 'Finish building the team') {
         generateHTML();
       }
-    })
+    });
 }
 
   function generateHTML() {
