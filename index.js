@@ -35,7 +35,7 @@ function promptsManager() {
           type: 'input',
           name: 'officeNumber',
           message: "Enter the Team Manager's office number:"
-        },
+        }
       ])
       .then((answers) => {
         const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
@@ -102,7 +102,7 @@ function promptsIntern() {
       }
     ])
     .then((answers) => {
-      const intern = new Engineer(answers.name, answers.id, answers.email, answers.school);
+      const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
       teamMembers.push(intern);
       //generateHTML();
       optionsMenu();       
@@ -111,18 +111,18 @@ function promptsIntern() {
 
 function optionsMenu() {
   inquirer
-    prompt([{
+    .prompt([{
       type: 'list',
       name: 'optionMenu',
       message: "Would you like to:",
       choices: ['Add an Engineer', 'Add an Intern', 'Finish building the team']
     }])
     .then((answers) => {
-      if (answers.menu === 'Add an engineer') {
+      if (answers.optionMenu === 'Add an engineer') {
         promptsEngineer();
-      } else if (answers.menu === 'Add an intern') {
+      } else if (answers.optionMenu === 'Add an intern') {
         promptsIntern();
-      } else if (answers.menu === 'Finish building the team') {
+      } else if (answers.optionMenu === 'Finish building the team') {
         generateHTML();
       }
     })
@@ -131,8 +131,8 @@ function optionsMenu() {
   function generateHTML() {
     const renderedHTML = render(teamMembers);
   
-   if(!fs.existsSync(outputPath)) {
-    fs.mkdirSync(outputPath);
+   if(!fs.existsSync(OUTPUT_DIR)) {
+    fs.mkdirSync(OUTPUT_DIR);
    }    
     fs.writeFileSync(outputPath, renderedHTML);
   
