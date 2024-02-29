@@ -40,7 +40,7 @@ function promptManager() {
       .then((answers) => {
         const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
         teamMembers.push(manager);
-        promptMenu();
+        generateHTML();       
       });
   }
 
@@ -50,13 +50,12 @@ function promptManager() {
   function generateHTML() {
     const renderedHTML = render(teamMembers);
   
-    if (!fs.existsSync(OUTPUT_DIR)) {
-      fs.mkdirSync(OUTPUT_DIR);
-    }
-  
+   if(!fs.existsSync(outputPath)) {
+    fs.mkdirSync(outputPath);
+   }    
     fs.writeFileSync(outputPath, renderedHTML);
   
     console.log(`Team HTML generated at ${outputPath}`);
   }
   
-  promptManager();
+    promptManager();
