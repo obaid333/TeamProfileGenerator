@@ -19,22 +19,22 @@ function promptManager() {
         {
           type: 'input',
           name: 'name',
-          message: "Enter the team manager's name:",
+          message: "Enter the team manager's name:"
         },
         {
           type: 'input',
           name: 'id',
-          message: "Enter the team manager's employee ID:",
+          message: "Enter the team manager's employee ID:"
         },
         {
           type: 'input',
           name: 'email',
-          message: "Enter the team manager's email:",
+          message: "Enter the team manager's email:"
         },
         {
           type: 'input',
           name: 'officeNumber',
-          message: "Enter the team manager's office number:",
+          message: "Enter the team manager's office number:"
         },
       ])
       .then((answers) => {
@@ -44,7 +44,32 @@ function promptManager() {
       });
   }
 
-
+function promptEngineer() {
+  inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: "Enter the Engineer's name:"
+      },
+      {
+        type: 'input',
+        name: 'ID',
+        message: "Enter the Engineer's ID:"
+      },
+      {
+        type: 'input',
+        name: 'email',
+        message: "Enter the Engineer's Email:"
+      },
+      {
+        type: 'input',
+        name: 'GitHub',
+        message: "Enter the Engineer's GitHub Username:"
+      }
+    ])
+    
+}
 
 
   function generateHTML() {
